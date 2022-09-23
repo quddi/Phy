@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class SlidersController : MonoBehaviour
 {
+    public const float MaxHeight = 2.5f;
+    public const int MaxLevelsCount = 99;
+    public const int MinLevelsCount = 10;
+
     [SerializeField] private GameObject[] _slidersObjects;
     [SerializeField] private TMP_InputField _inputField;
-    [SerializeField] private float _maxHeight;
 
     private Slider[] _sliders;
     private int _count;
 
-    public float[] GetSlidersValues => _sliders.Take(_count).Select(x => x.value * _maxHeight).ToArray();
+    public float[] GetSlidersValues => _sliders.Take(_count).Select(x => x.value * MaxHeight).ToArray();
+    public int Count => _count;
 
     private void Awake()
     {
@@ -23,7 +27,7 @@ public class SlidersController : MonoBehaviour
     public void OnSlidersCountChange(string input)
     {
         int count = int.Parse(_inputField.text);
-        count = Mathf.Clamp(count, 10, 99);
+        count = Mathf.Clamp(count, MinLevelsCount, MaxLevelsCount);
 
         ChangeCount(count);
     }

@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshFilter))]
-public class MeshGenerator : MonoBehaviour
+public class MeshGenerator1 : MonoBehaviour
 {
     [SerializeField] private float[] _levels;
-
-    public float[] Levels => _levels;
 
     private const float HillLength = 10;
     private float _maxHeight;
@@ -19,7 +16,7 @@ public class MeshGenerator : MonoBehaviour
         new Vector3(HillLength, 0, 2),          //0
         new Vector3(HillLength, 0, 0),          //1
         new Vector3(0, 0, 2),                   //2
-        new Vector3(0, 0, 0)                   //3
+        new Vector3(0, 0, 0)                    //3
     };
 
     private List<int> _triangles = new List<int>()
@@ -51,8 +48,8 @@ public class MeshGenerator : MonoBehaviour
     {
         float _deltaDistance = HillLength / (_levels.Length - 1);
 
-        _verticies.AddRange(new Vector3[] { new Vector3(0, _levels[0], 2),
-                                        new Vector3(0, _levels[0], 0) });
+        _verticies.AddRange(new Vector3[] { new Vector3(0, _maxHeight - _levels[0], 2),
+                                        new Vector3(0, _maxHeight - _levels[0], 0) });
         VerticesInfo leftVerticesInfo = new VerticesInfo(5, 3, 9, 7);
         VerticesInfo rightVerticesInfo = new VerticesInfo(4, 2, 8, 6);
 
@@ -62,8 +59,8 @@ public class MeshGenerator : MonoBehaviour
             {
                 new Vector3(_deltaDistance * (i + 1), 0, 2),
                 new Vector3(_deltaDistance * (i + 1), 0, 0),
-                new Vector3(_deltaDistance * (i + 1), _levels[i], 2),
-                new Vector3(_deltaDistance * (i + 1), _levels[i], 0)
+                new Vector3(_deltaDistance * (i + 1), SlidersController.MaxHeight - _levels[i], 2),
+                new Vector3(_deltaDistance * (i + 1), SlidersController.MaxHeight - _levels[i], 0)
             });
 
             _triangles.AddRange(new int[]
