@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SlidersController : MonoBehaviour
 {
-    public const float MaxHeight = 2.5f;
+    public const float MaxHeight = 0.225f;
     public const int MaxLevelsCount = 99;
     public const int MinLevelsCount = 10;
 

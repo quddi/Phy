@@ -9,7 +9,7 @@ public class MeshGenerator : MonoBehaviour
 
     public float[] Levels => _levels;
 
-    private const float HillLength = 10;
+    private const float HillLength = 0.88f;
     private float _maxHeight;
 
     private Mesh _mesh;

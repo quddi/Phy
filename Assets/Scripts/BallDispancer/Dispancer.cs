@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Dispancer : MonoBehaviour
 {
-    [SerializeField] private Animator _pistonAnimator;
-
+    [SerializeField] private Transform _ball;
     private void Start()
     {
-        _pistonAnimator.SetBool("Push", true);
+        _ball.parent = null;
     }
 }

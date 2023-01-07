@@ -6,7 +6,7 @@ public class MeshGenerator1 : MonoBehaviour
 {
     [SerializeField] private float[] _levels;
 
-    private const float HillLength = 10;
+    private const float HillLength = 0.88f;
     private float _maxHeight;
 
     private Mesh _mesh;
