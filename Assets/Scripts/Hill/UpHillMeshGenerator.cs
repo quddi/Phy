@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeshGenerator1 : MonoBehaviour
+public class UpHillMeshGenerator : HillMeshGenerator
 {
-    [SerializeField] private float[] _levels;
-
-    private const float HillLength = 0.88f;
-    private float _maxHeight;
-
-    private Mesh _mesh;
-
     private List<Vector3> _verticies = new List<Vector3>()
     {
         new Vector3(HillLength, 0, 2),          //0
@@ -28,23 +21,7 @@ public class MeshGenerator1 : MonoBehaviour
         3, 1, 0
     };
 
-    public void GenerateNew(float[] newLevels, float maxHeight)
-    {
-        _levels = newLevels;
-        _maxHeight = maxHeight;
-        Generate();
-    }
-
-    private void Generate()
-    {
-        _mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = _mesh;
-        GetComponent<MeshCollider>().sharedMesh = _mesh;
-        CreateShape();
-        UpdateMesh();
-    }
-
-    private void CreateShape()
+    protected override void CreateShape()
     {
         float _deltaDistance = HillLength / (_levels.Length - 1);
 
@@ -59,8 +36,8 @@ public class MeshGenerator1 : MonoBehaviour
             {
                 new Vector3(_deltaDistance * (i + 1), 0, 2),
                 new Vector3(_deltaDistance * (i + 1), 0, 0),
-                new Vector3(_deltaDistance * (i + 1), SlidersController.MaxHeight - _levels[i], 2),
-                new Vector3(_deltaDistance * (i + 1), SlidersController.MaxHeight - _levels[i], 0)
+                new Vector3(_deltaDistance * (i + 1), Context.MaxHeight - _levels[i], 2),
+                new Vector3(_deltaDistance * (i + 1), Context.MaxHeight - _levels[i], 0)
             });
 
             _triangles.AddRange(new int[]
@@ -84,7 +61,7 @@ public class MeshGenerator1 : MonoBehaviour
         });
     }
 
-    private void UpdateMesh()
+    protected override void UpdateMesh()
     {
         _mesh.Clear();
         _mesh.vertices = _verticies.ToArray();

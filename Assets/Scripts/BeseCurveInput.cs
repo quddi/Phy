@@ -9,12 +9,12 @@ public class BeseCurveInput : MonoBehaviour
 
     public float[] InputFromCurve()
     {
-        int count = SlidersController.MaxLevelsCount;
+        int count = Context.MaxLevelsCount;
 
         float[] result = new float[count];
 
         for (int i = 0; i < count; i++)
-            result[i] = _curve.Evaluate(i * (1.0f / count)) * SlidersController.MaxHeight;
+            result[i] = _curve.Evaluate(i * (1.0f / count)) * Context.MaxHeight;
 
         MaxLevelHeight = result.Max();
 

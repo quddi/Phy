@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshFilter))]
-public class MeshGenerator : MonoBehaviour
+public class DownHillMeshGenerator : HillMeshGenerator
 {
-    [SerializeField] private float[] _levels;
-
     public float[] Levels => _levels;
-
-    private const float HillLength = 0.88f;
-    private float _maxHeight;
-
-    private Mesh _mesh;
 
     private List<Vector3> _verticies = new List<Vector3>()
     {
@@ -31,23 +23,7 @@ public class MeshGenerator : MonoBehaviour
         3, 1, 0
     };
 
-    public void GenerateNew(float[] newLevels, float maxHeight)
-    {
-        _levels = newLevels;
-        _maxHeight = maxHeight;
-        Generate();
-    }
-
-    private void Generate()
-    {
-        _mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = _mesh;
-        GetComponent<MeshCollider>().sharedMesh = _mesh;
-        CreateShape();
-        UpdateMesh();
-    }
-
-    private void CreateShape()
+    protected override void CreateShape()
     {
         float _deltaDistance = HillLength / (_levels.Length - 1);
 
@@ -87,7 +63,7 @@ public class MeshGenerator : MonoBehaviour
         });
     }
 
-    private void UpdateMesh()
+    protected override void UpdateMesh()
     {
         _mesh.Clear();
         _mesh.vertices = _verticies.ToArray();

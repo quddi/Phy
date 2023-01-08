@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 9157420012550007273}
   - component: {fileID: 9157420012550007274}
   - component: {fileID: 9157420012550007275}
-  - component: {fileID: 2454679240644922255}
   - component: {fileID: -2876221150281088403}
   - component: {fileID: 2352828941211023799}
+  - component: {fileID: 7724911720939414726}
   m_Layer: 0
-  m_Name: MeshGenerator 1
+  m_Name: UpHill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2454679240644922255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9157420012550006805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4984992fdaa5d8f40a954b67657a1df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _levels: []
 --- !u!64 &-2876221150281088403
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +116,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &7724911720939414726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9157420012550006805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8b813eefbc42649add015204bb4ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

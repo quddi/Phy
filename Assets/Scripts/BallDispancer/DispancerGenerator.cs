@@ -27,10 +27,8 @@ public class DispancerGenerator : MonoBehaviour
         if (_spawnedDispancer != null)
             Destroy(_spawnedDispancer);
 
-        _spawnedDispancer = Instantiate(_dispancerPrefab, 
-                                        new Vector3(_spawnPositionX, 
-                                                    _spawnPositionY, 
-                                                    _spawnPositionZ), 
-                                        Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(_spawnPositionX, _spawnPositionY, _spawnPositionZ);
+
+        _spawnedDispancer = Instantiate(_dispancerPrefab, spawnPosition, Quaternion.identity);
     }
 }

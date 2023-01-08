@@ -23,10 +23,11 @@ public class HillCreator : MonoBehaviour
             Destroy(_upHill);
 
         GameObject downHill = Instantiate(_downHillPrefab, _spawnPosition, Quaternion.identity);
-        downHill.GetComponent<MeshGenerator>().GenerateNew(levels, maxHeight);
+        downHill.GetComponent<HillMeshGenerator>().GenerateNew(levels, maxHeight);
         _dispancerGenerator.SpawnPositionY = levels[0];
+
         GameObject upHill = Instantiate(_upHillPrefab, _spawnPosition, Quaternion.identity);
-        upHill.GetComponent<MeshGenerator1>().GenerateNew(levels, maxHeight);
+        upHill.GetComponent<HillMeshGenerator>().GenerateNew(levels, maxHeight);
         upHill.transform.position = new Vector3(0, maxHeight, 0);
 
         _downHill = downHill;

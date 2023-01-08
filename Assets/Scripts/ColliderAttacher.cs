@@ -6,7 +6,7 @@ public class ColliderAttacher : MonoBehaviour
 {
     public void AttachRigidbody()
     {
-        GameObject hill = FindObjectOfType<MeshGenerator>().gameObject;
+        GameObject hill = FindObjectOfType<DownHillMeshGenerator>().gameObject;
         hill.AddComponent<Rigidbody>();
         hill.GetComponent<Rigidbody>().isKinematic = true;
     }
