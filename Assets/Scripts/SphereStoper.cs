@@ -11,7 +11,7 @@ public class SphereStoper : MonoBehaviour
             return;
 
         Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
-        _resultText.text = rigidbody.velocity.magnitude.ToString();
+        _resultText.text = string.Format("{0:f}", rigidbody.velocity.magnitude);
         Destroy(collision.gameObject);
     }
 }
